@@ -7,8 +7,6 @@ import javax.persistence.Table;
 public class KwImage {
 	@Id
 	private String id;
-	private String stationId;
-	private String laneId;
 	private byte[] image;
 
 	public String getId() {
@@ -17,22 +15,6 @@ public class KwImage {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getStationId() {
-		return stationId;
-	}
-
-	public void setStationId(String stationId) {
-		this.stationId = stationId;
-	}
-
-	public String getLaneId() {
-		return laneId;
-	}
-
-	public void setLaneId(String laneId) {
-		this.laneId = laneId;
 	}
 
 	public byte[] getImage() {
