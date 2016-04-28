@@ -9,4 +9,9 @@
 		<setting name="aggressiveLazyLoading" value="true" />
 		<setting name="logImpl" value="LOG4J" />
 	</settings>
+	
+    <!-- 实体类别名 -->
+    <typeAliases>
+        <package name="com.image.engine.models" />
+    </typeAliases>
 </configuration> 

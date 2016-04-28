@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper的配置信息 -->
+<mapper namespace="com.image.engine.mappers.KwImageMapper">
+	<select id="selectByPrimaryKey" resultType="KwImage" parameterType="String">
+	    SELECT *
+	    FROM   kw_image
+        WHERE  #{id} = regexp_replace(id, '-', '')
+	</select>
+</mapper>
