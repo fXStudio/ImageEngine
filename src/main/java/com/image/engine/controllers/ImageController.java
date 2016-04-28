@@ -32,7 +32,7 @@ public class ImageController {
 	 * @param response
 	 */
 	@RequestMapping(value = "{id}")
-	public void viewImage(@PathVariable("id") String id, HttpServletResponse response) {
+	public synchronized void viewImage(@PathVariable("id") String id, HttpServletResponse response) {
 		// 设置Http的Mime类型
 		response.setContentType("image/png");
 		// 查询图片对象
@@ -44,7 +44,6 @@ public class ImageController {
 			try {
 				out = response.getOutputStream();
 				out.write(image.getImage());
-				out.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
