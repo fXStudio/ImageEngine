@@ -3,6 +3,11 @@ package com.image.engine.models;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 数据模型
+ * 
+ * @author FXStudio.Ajaxfan
+ */
 @Table(name = "kw_image")
 public class KwImage {
 	@Id

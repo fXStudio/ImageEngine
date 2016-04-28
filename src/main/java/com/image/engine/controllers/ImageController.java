@@ -14,14 +14,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.image.engine.models.KwImage;
 import com.image.engine.services.IKwImageService;
 
+/**
+ * 图片服务控制器
+ * 
+ * @author FXStudio.Ajaxfan
+ */
 @Controller
 @RequestMapping(value = "cdn", method = { RequestMethod.GET })
 public class ImageController {
 	/** 图片服务 */
 	private @Autowired IKwImageService kwImageService;
 
+	/**
+	 * 图片服务
+	 * 
+	 * @param id
+	 * @param response
+	 */
 	@RequestMapping(value = "{id}")
-	public void disp(@PathVariable("id") String id, HttpServletResponse response) {
+	public void viewImage(@PathVariable("id") String id, HttpServletResponse response) {
 		// 设置Http的Mime类型
 		response.setContentType("image/png");
 		// 查询图片对象

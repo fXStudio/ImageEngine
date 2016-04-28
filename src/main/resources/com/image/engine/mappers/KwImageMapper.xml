@@ -6,6 +6,6 @@
 	<select id="selectByPrimaryKey" resultType="KwImage" parameterType="String">
 	    SELECT *
 	    FROM   kw_image
-        WHERE  #{id} = regexp_replace(id, '-', '')
+        WHERE  #{id} = regexp_replace(id, '-', '') AND rownum = 1
 	</select>
 </mapper>
