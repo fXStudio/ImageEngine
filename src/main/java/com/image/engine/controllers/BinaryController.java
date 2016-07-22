@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.image.engine.services.IAnalyticalService;
+import com.image.engine.models.KwImage;
+import com.image.engine.services.IKwImageService;
 
 /**
  * 图片服务控制器
@@ -19,10 +20,10 @@ import com.image.engine.services.IAnalyticalService;
  * @author FXStudio.Ajaxfan
  */
 @Controller
-@RequestMapping(value = "img", method = { RequestMethod.GET })
-public class ImageController {
+@RequestMapping(value = "cdn", method = { RequestMethod.GET })
+public class BinaryController {
 	/** 图片服务 */
-	private @Autowired IAnalyticalService analyticalService;
+	private @Autowired IKwImageService kwImageService;
 
 	/**
 	 * 图片服务
@@ -30,19 +31,19 @@ public class ImageController {
 	 * @param id
 	 * @param response
 	 */
-	@RequestMapping(value = "{name:.+}")
-	public synchronized void viewImage(@PathVariable("name") String name, HttpServletResponse response) {
+	@RequestMapping(value = "{id}")
+	public synchronized void viewImage(@PathVariable("id") String id, HttpServletResponse response) {
 		// 设置Http的Mime类型
 		response.setContentType("image/png");
 		// 查询图片对象
-		byte[] image = analyticalService.find(name);
+		KwImage image = kwImageService.find(id);
 
 		if (image != null) {
 			OutputStream out = null;
 
 			try {
 				out = response.getOutputStream();
-				out.write(image);
+				out.write(image.getImage());
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
