@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper的配置信息 -->
+<mapper namespace="com.image.engine.mappers.AnalyticalMapper">
+    <resultMap id="analyticalMap" type="Analytical">
+        <id property="carImage" column="car_image" />
+        <result property="outDate" column="out_date"/>
+    </resultMap>
+
+
+	<select id="selectByPrimaryKey" resultMap="analyticalMap" parameterType="String">
+	    SELECT to_char(out_date, 'yyyymmdd') out_date, car_image
+	    FROM   st_analytical_tbl
+        WHERE  #{id} = car_image
+	</select>
+</mapper>
