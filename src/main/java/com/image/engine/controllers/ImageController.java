@@ -36,7 +36,7 @@ public class ImageController {
 		response.setContentType("image/png");
 		// 查询图片对象
 		byte[] image = analyticalService.find(name);
-
+		
 		if (image != null) {
 			OutputStream out = null;
 
