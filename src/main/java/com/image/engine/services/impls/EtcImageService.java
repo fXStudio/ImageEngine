@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.image.engine.mappers.AnalyticalMapper;
 import com.image.engine.models.Analytical;
-import com.image.engine.services.IAnalyticalService;
+import com.image.engine.services.IEtcImageService;
 
 /**
  * 核心服务
@@ -20,11 +20,11 @@ import com.image.engine.services.IAnalyticalService;
  * @author FXStudio.Ajaxfan
  */
 @Service
-public class AnalyticalService implements IAnalyticalService {
+public class EtcImageService implements IEtcImageService {
 	/** 数据逻辑模型 */
 	private @Autowired AnalyticalMapper ayalyticalMapper;
 	/** 图片文件存放的根目录 */
-	private @Value("${ImageEngine.image.directory}") String image_path;
+	private @Value("${ImageEngine.etc.image.directory}") String image_path;
 
 	/**
 	 * 查询图片信息
@@ -32,12 +32,12 @@ public class AnalyticalService implements IAnalyticalService {
 	 * @param id
 	 * @return
 	 */
-	@Cacheable(value = "caches", key = "#id")
+	@Cacheable(value = "caches")
 	@Override
 	public byte[] find(String id) {
 		// 表格对象
 		Analytical model = ayalyticalMapper.selectByPrimaryKey(id);
-
+		
 		return loadImage(new File(getImagePath(model.getOutDate(), model.getCarImage())));
 	}
 
